@@ -268,7 +268,7 @@ namespace CKAN
             {
                 throw new PathErrorKraken(
                     path,
-                    String.Format("{0} is already absolute", path)
+                    String.Format("{0} is already absolute. Is it in {1}", path, root)
                 );
             }
 
