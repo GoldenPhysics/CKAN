@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using log4net;
-using log4net.Config;
+//using log4net.Config;
 using log4net.Core;
 
 namespace CKAN.CmdLine

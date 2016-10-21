@@ -75,11 +75,11 @@ namespace CKAN
 
             if (Directory.Exists(steam))
             {
-                log.InfoFormat("Found Steam at {0}", steam);
+                //log.InfoFormat("Found Steam at {0}", steam);
                 return steam;
             }
 
-            log.Info("Steam not found on this system.");
+            //log.Info("Steam not found on this system.");
             return null;
         }
 
@@ -266,10 +266,18 @@ namespace CKAN
 
             if (Path.IsPathRooted(path))
             {
-                throw new PathErrorKraken(
-                    path,
-                    String.Format("{0} is already absolute. Is it in {1}", path, root)
-                );
+                if (path.StartsWith(root, StringComparison.CurrentCulture))
+                {
+                    throw new PathErrorKraken(
+                        path,
+                        String.Format("{0} is already absolute. It containts root {1}", path, root)
+                    );
+                } else {
+                    throw new PathErrorKraken(
+                        path,
+                        String.Format("{0} is already absolute. Is it in {1}", path, root)
+                    );
+                }
             }
 
             if (!Path.IsPathRooted(root))
